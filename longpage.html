@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talk To Gather</title>
+    <link href="https://fonts.googleapis.com/css2?family=Just+Another+Hand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        .header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .logo {
+            width: 150px;
+            height: auto;
+        }
+
+        .back-arrow {
+            width: 30px;
+            height: auto;
+            cursor: pointer;
+        }
+
+        .main-section {
+            width: 100%;
+            background-color: #1554F6;
+            padding: 50px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .image-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            width: 100%;
+            max-width: 900px;
+            height: 600px;
+            margin: 0 auto;
+        }
+
+        .image-container img {
+            width: 300px;
+            border-radius: 15px;
+            position: absolute;
+            opacity: 0;
+        }
+
+        .image1 {
+            animation: slideInLeft 1.5s ease-out forwards;
+            transform: rotate(-10deg);
+        }
+
+        .image2 {
+            animation: slideInBottom 1.5s ease-out 0.5s forwards;
+            transform: scale(1.1);
+        }
+
+        .image3 {
+            animation: slideInRight 1.5s ease-out 1s forwards;
+            transform: rotate(10deg);
+        }
+
+        .content-section {
+            width: 100%;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .content-section h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .p1class {
+            font-size: 1.5rem;
+            line-height: 1.6;
+            max-width: 90%;
+            margin: 0 auto;
+        }
+
+        .yellow-section {
+            width: 100%;
+            background-color: #FFEB3B;
+            padding: 50px 20px;
+            border-bottom-right-radius: 70px;
+            border-bottom-left-radius: 70px;
+        }
+
+        .screenshots-section {
+            width: 100%;
+            padding: 50px 20px;
+            background-color: #32BBFF;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .screenshots-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            overflow-x: auto;
+            padding: 20px 0;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .screenshots-row::-webkit-scrollbar {
+            display: none;
+        }
+
+        .screenshots-row img {
+            width: 200px;
+            min-width: 200px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .screenshots-row img:hover {
+            transform: scale(1.05);
+        }
+
+        .key-features {
+            width: 100%;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .features-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .button {
+            padding: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            border-radius: 15px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .cta-section {
+            width: 100%;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .orange-section,
+        .yellow-section-bottom {
+            width: 100%;
+            height: auto;
+            min-height: 300px;
+            padding: 50px 20px;
+        }
+
+        .orange-section {
+            background-color: #FC711F;
+        }
+
+        .yellow-section-bottom {
+            background-color: #FBDC2E;
+        }
+
+        /* Animation Keyframes */
+        @keyframes slideInLeft {
+            0% {
+                transform: translateX(-200%) rotate(-10deg);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(-50px) rotate(-10deg);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInBottom {
+            0% {
+                transform: translateY(200%) scale(1.1);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0) scale(1.1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInRight {
+            0% {
+                transform: translateX(200%) rotate(10deg);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(50px) rotate(10deg);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Media Queries */
+        @media screen and (max-width: 1200px) {
+            .image-container {
+                height: 500px;
+            }
+
+            .image-container img {
+                width: 250px;
+            }
+
+            .screenshots-row img {
+                width: 180px;
+                min-width: 180px;
+            }
+        }
+
+        @media screen and (max-width: 992px) {
+            .features-buttons {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .content-section h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .image-container {
+                height: 400px;
+            }
+
+            .image-container img {
+                width: 200px;
+            }
+
+            .content-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .p1class {
+                font-size: 1.2rem;
+            }
+
+            .screenshots-row img {
+                width: 150px;
+                min-width: 150px;
+            }
+            
+            .screenshots-row {
+                gap: 15px;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .image-container {
+                height: 300px;
+            }
+
+            .image-container img {
+                width: 150px;
+            }
+
+            .features-buttons {
+                grid-template-columns: 1fr;
+            }
+
+            .content-section h1 {
+                font-size: 2rem;
+            }
+
+            .screenshots-row img {
+                width: 120px;
+                min-width: 120px;
+            }
+            
+            .screenshots-row {
+                gap: 10px;
+            }
+
+            .yellow-section {
+                border-radius: 35px;
+            }
+
+            .orange-section,
+            .yellow-section-bottom {
+                min-height: 200px;
+                padding: 30px 15px;
+            }
+        }
+         /* Footer Styles */
+         .footer-wrapper {
+            background-color: #DEE13E;
+            font-family: 'Poppins', sans-serif;
+            margin-top: 100px;
+            width: 100%;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            align-items: start;
+            gap: 50px;
+            padding: 80px;
+            max-width: 1920px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            position: relative;
+        }
+
+        .footer-content img {
+            position: absolute;
+            left: -27px;
+            top: -50px;
+            width: 140px;
+            height: 47px;
+        }
+
+        .footer-content h1 {
+            font-size: 70px;
+            line-height: 80px;
+            margin-bottom: 20px;
+            color: #000000;
+        }
+
+        .get-in-touch {
+            font-weight: 500;
+            font-size: 30px;
+            line-height: 45px;
+            color: #474CBA;
+            margin-top: 20px;
+        }
+
+        .careers-section {
+            margin-left: 225px;
+            margin-top: 50px;
+        }
+
+        .careers-section h2 {
+            font-size: 70px;
+            line-height: 70px;
+            margin-bottom: 20px;
+            color: #000000;
+        }
+
+        .apply-here {
+            font-weight: 500;
+            font-size: 30px;
+            line-height: 45px;
+            color: #474CBA;
+            text-decoration: none;
+        }
+
+        .address-section {
+            font-weight: 800;
+            font-size: 30px;
+            line-height: 45px;
+            color: #474CBA;
+        }
+
+        .address-section p {
+            margin: 10px 0;
+        }
+
+        .gif-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .gif-container img {
+            width: 353px;
+            height: 353px;
+            object-fit: contain;
+        }
+
+        .footer-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 80px;
+            max-width: 1920px;
+            margin: 0 auto;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #000000;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 30px;
+            margin: 0 20px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-icons a {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #DEE13E;
+            border-radius: 50%;
+        }
+
+        .social-icons img {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="./assets/images/logo.png" alt="Talk To Gather Logo" class="logo">
+        <img src="./assets/images/backbutton.png" alt="Back Arrow" class="back-arrow">
+    </div>
+
+    <img src="./assets/images/Layer1.png" alt="Layer 1" style="max-width: 100%; height: auto; margin: 20px 0;">
+
+    <div class="main-section">
+        <div class="image-container">
+            <img src="./assets/images/ShowCategories1.png" alt="Left Screen" class="image1">
+            <img src="./assets/images/MainScreen1.png" alt="Center Screen" class="image2">
+            <img src="./assets/images/MessagesConversation1.png" alt="Right Screen" class="image3">
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h1>Talk To Gather</h1>
+        <p class="p1class">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+        </p>
+    </div>
+
+    <div class="yellow-section">
+        <h2 style="text-align: left; margin-left: 5%; margin-bottom: 20px;">The Problem</h2>
+        <p style="max-width: 90%; margin: 0 auto;">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+        </p>
+    </div>
+
+    <div class="content-section">
+        <h3 style="color: #1554F6; margin-bottom: 20px;">The Solution</h3>
+        <p style="max-width: 90%; margin: 0 auto;">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+        </p>
+    </div>
+
+    <div style="width: 100%; padding: 20px;">
+        <h3 class="app-user-flow-title">App User Flow</h3>
+        <div class="uploaded-image-section">
+            <img src="./assets/images/image1flow.png" alt="Workflow Diagram" style="max-width: 100%; height: auto;">
+        </div>
+    </div>
+
+    <h1 style="text-align: center; margin: 40px 0;">Wireframes</h1>
+    <div class="uploaded-image-section">
+        <img src="./assets/images/image2.png" alt="Wireframes" style="max-width: 100%; height: auto;">
+    </div>
+
+    <h1 style="text-align: center; margin: 40px 0;">App Shots</h1>
+    <div class="screenshots-section">
+        <div class="screenshots-row">
+            <img src="./assets/images/walkthrough 3 1.png" alt="App Screenshot 1" class="screenshot">
+            <img src="./assets/images/walkthrough 2 1.png" alt="App Screenshot 2" class="screenshot">
+            <img src="./assets/images/walkthrough 1 1.png" alt="App Screenshot 3" class="screenshot">
+            <img src="./assets/images/Verify Number 1.png" alt="App Screenshot 4" class="screenshot">
+            <img src="./assets/images/User Profile 1.png" alt="App Screenshot 5" class="screenshot">
+        </div>
+        
+        <div class="screenshots-row">
+            <img src="./assets/images/walkthrough 3 1.png" alt="App Screenshot 1" class="screenshot">
+            <img src="./assets/images/walkthrough 2 1.png" alt="App Screenshot 2" class="screenshot">
+            <img src="./assets/images/walkthrough 1 1.png" alt="App Screenshot 3" class="screenshot">
+            <img src="./assets/images/Verify Number 1.png" alt="App Screenshot 4" class="screenshot">
+            <img src="./assets/images/User Profile 1.png" alt="App Screenshot 5" class="screenshot">
+            <img src="./assets/images/splash 1.png" alt="App Screenshot 6" class="screenshot">
+        </div>
+    </div>
+
+    <div class="orange-section"></div>
+    <div class="yellow-section-bottom"></div>
+
+    <div class="key-features">
+        <h1>Key Features</h1>
+        <div class="features-buttons">
+            <div class="button" style="background-color: #327CFF;">Live Rooms</div>
+            <div class="button" style="background-color: #327CFF;">Live Rooms</div>
+            <div class="button" style="background-color: #327CFF;">Live Rooms</div>
+            <div class="button" style="background-color: #FFD700; color: #333;">Chat Rooms</div>
+            <div class="button" style="background-color: #FFD700; color: #333;">Chat Rooms</div>
+            <div class="button" style="background-color: #FFD700; color: #333;">Chat Rooms</div>
+            <div class="button" style="background-color: #FF5733;">Events</div>
+            <div class="button" style="background-color: #FF5733;">Events</div>
+            <div class="button" style="background-color: #FF5733;">Events</div>
+        </div>
+    </div>
+
+    <div class="cta-section">
+        <p style="font-family: 'Just Another Hand', cursive; font-size: 2.5rem; margin: 0;">
+            Want to see what can Fooliz do for you?
+        </p>
+        <div style="margin-top: 5px;">
+            <div style="font-family: 'Just Another Hand', cursive; font-size: 2rem; display: inline-block; background-color: #D9E021; color: #000; padding: 5px 15px; border-radius: 5px; cursor: pointer;">
+                <a href="conss.html">Fill out a project</a>
+            </div>
+            <p style="font-family: 'Just Another Hand', cursive; font-size: 2.5rem; display: inline-block; margin-left: 10px; margin: 0;">
+                brief and get the ball rolling!
+            </p>
+        </div>
+        <footer class="footer-wrapper">
+            <div class="footer-container">
+                <div class="footer-content">
+                    <img src="assets/images/logo.png" alt="Logo">
+                    <h1>Let's Build Your Apps Together</h1>
+                    <p class="get-in-touch"><a href="getintouch.html">Get In Touch</a></p>
+                    <div class="careers-section">
+                        <h2>Careers</h2>
+                        <a href="applyhere.html" class="apply-here">Apply here</a>
+                    </div>
+                </div>
+
+                <div class="address-section">
+                    <p>Dubai, Lahore, wtv Road</p>
+                    <p>Address, wtv, 43543</p>
+                    <p>Address, wtv, 43543</p>
+                    <p>Address, wtv, 43543</p>
+                </div>
+
+                <div class="gif-container">
+                    <img src="assets/images/footer.gif" alt="Walking Character Illustration">
+                </div>
+            </div>
+
+            <div class="footer-navigation">
+                <div class="nav-links">
+                    <a href="#">Work</a>
+                    <a href="#">Contact</a>
+                    <a href="#">About us</a>
+                    <a href="#">Clients</a>
+                    <a href="#">Services</a>
+                </div>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook">
+                        <img src="assets/images/fb.png" alt="Facebook">
+                    </a>
+                    <a href="#" aria-label="Instagram">
+                        <img src="assets/images/instagram.png" alt="Instagram">
+                    </a>
+                    <a href="#" aria-label="LinkedIn">
+                        <img src="assets/images/lkd.png" alt="LinkedIn">
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

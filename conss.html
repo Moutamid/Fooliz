@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/fonts/HeatherGreen.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: #ffffff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            width: 150px;
+            height: auto;
+        }
+
+        .back-arrow {
+            width: 30px;
+            height: auto;
+            cursor: pointer;
+        }
+
+        .container {
+            display: flex;
+            flex: 1;
+            width: 100%;
+            margin-top: 80px;
+            min-height: calc(100vh - 80px);
+        }
+
+        .left-section {
+            background-color: #DEE13E;
+            padding: 60px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            position: sticky;
+            top: 80px;
+            height: calc(100vh - 80px);
+        }
+
+        .left-section h2, 
+        .left-section p {
+            font-family: 'HeatherGreen', sans-serif;
+            color: #000000;
+        }
+
+        .left-section h2 {
+            font-size: 190px;
+            font-weight: 700;
+            word-spacing: 1px;
+            letter-spacing: 9px;
+            margin-bottom: 30px;
+        }
+        .left-section p {
+            font-size: 54px;  
+            margin: 15px 0;
+            line-height: 0.9;
+        }
+
+        .contactimage {
+            width: 230px;  
+            height: 900px;
+            margin-top: 20px;
+        }
+      
+
+        .right-section {
+            flex: 3;
+            background-color: #ffffff;
+            padding: 90px;
+            display: flex;
+            align-items: center;
+        }
+
+        form {
+            width: 100%;
+            max-width: 1432px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            display: block;
+            color: #333;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 25px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 15px 25px;
+            border: 2px solid #6D6D6D;
+            border-radius: 50px;
+            font-size: 16px;
+            font-family: 'Roboto', sans-serif;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #474CBA;
+        }
+
+        textarea {
+            resize: none;
+            height: 150px;
+            border-radius: 25px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .budget-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .budget-options label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 16px;
+            color: #303030;
+            font-weight: normal;
+            cursor: pointer;
+            margin: 0;
+        }
+
+        .budget-options input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .submit-btn {
+            background-color: #474CBA;
+            color: #ffffff;
+            border: none;
+            padding: 18px 40px;
+            font-size: 18px;
+            font-weight: 500;
+            border-radius: 12px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 30px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .submit-btn:hover {
+            background-color: #3A4099;
+            transform: translateY(-2px);
+        }
+        
+         /* Footer Styles */
+         .footer-wrapper {
+            background-color: #DEE13E;
+            font-family: 'Poppins', sans-serif;
+            margin-top: 100px;
+            width: 100%;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            align-items: start;
+            gap: 50px;
+            padding: 80px;
+            max-width: 1920px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            position: relative;
+        }
+
+        .footer-content img {
+            position: absolute;
+            left: -27px;
+            top: -50px;
+            width: 140px;
+            height: 47px;
+        }
+
+        .footer-content h1 {
+            font-size: 70px;
+            line-height: 80px;
+            margin-bottom: 20px;
+            color: #000000;
+        }
+
+        .get-in-touch {
+            font-weight: 500;
+            font-size: 30px;
+            line-height: 45px;
+            color: #474CBA;
+            margin-top: 20px;
+        }
+
+        .careers-section {
+            margin-left: 225px;
+            margin-top: 50px;
+        }
+
+        .careers-section h2 {
+            font-size: 70px;
+            line-height: 70px;
+            margin-bottom: 20px;
+            color: #000000;
+        }
+
+        .apply-here {
+            font-weight: 500;
+            font-size: 30px;
+            line-height: 45px;
+            color: #474CBA;
+            text-decoration: none;
+        }
+
+        .address-section {
+            font-weight: 800;
+            font-size: 30px;
+            line-height: 45px;
+            color: #474CBA;
+        }
+
+        .address-section p {
+            margin: 10px 0;
+        }
+
+        .gif-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .gif-container img {
+            width: 353px;
+            height: 353px;
+            object-fit: contain;
+        }
+
+        .footer-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 80px;
+            max-width: 1920px;
+            margin: 0 auto;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #000000;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 30px;
+            margin: 0 20px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-icons a {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #DEE13E;
+            border-radius: 50%;
+        }
+
+        .social-icons img {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="main.html">
+            <img src="./assets/images/logo.png" alt="Logo">
+        </a> 
+        <a href="javascript:history.back();">
+            <img src="./assets/images/backarrow.png" alt="Back Arrow">
+        </a>
+        </div>
+
+    <div class="container">
+        <div class="left-section">
+            <h2>LETS CONNECT</h2>
+            <p>+971 56 725 7157</p>
+            <p>fooliz@gmail.com</p>
+            <p>Dubai, Business Bay,<br>Sbk-506, UAE</p>
+            <img src="./assets/images/contactimage.gif" alt="contactimage" class="contactimage">
+        </div>
+
+        <div class="right-section">
+            <form>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="first-name">First Name*</label>
+                        <input type="text" id="first-name" placeholder="Enter your first name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">Last Name*</label>
+                        <input type="text" id="last-name" placeholder="Enter your last name" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email*</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="message">Message*</label>
+                        <textarea id="message" placeholder="Enter your message" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Budget*</label>
+                        <div class="budget-options">
+                            <label><input type="radio" name="budget" value="250-1000" required> $250-$1000</label>
+                            <label><input type="radio" name="budget" value="1000-2000"> $1000-$2000</label>
+                            <label><input type="radio" name="budget" value="2000-5000"> $2000-$5000</label>
+                            <label><input type="radio" name="budget" value="5000-10000"> $5000-$10000</label>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+        </div>
+        
+    </div>
+    <footer class="footer-wrapper">
+        <div class="footer-container">
+            <div class="footer-content">
+                <img src="assets/images/logo.png" alt="Logo">
+                <h1>Let's Build Your Apps Together</h1>
+                <p class="get-in-touch"><a href="getintouch.html">Get In Touch</a></p>
+                <div class="careers-section">
+                    <h2>Careers</h2>
+                    <a href="applyhere.html" class="apply-here">Apply here</a>
+                </div>
+            </div>
+
+            <div class="address-section">
+                <p>Dubai, Lahore, wtv Road</p>
+                <p>Address, wtv, 43543</p>
+                <p>Address, wtv, 43543</p>
+                <p>Address, wtv, 43543</p>
+            </div>
+
+            <div class="gif-container">
+                <img src="assets/images/footer.gif" alt="Walking Character Illustration">
+            </div>
+        </div>
+
+        <div class="footer-navigation">
+            <div class="nav-links">
+                <a href="#">Work</a>
+                <a href="#">Contact</a>
+                <a href="#">About us</a>
+                <a href="#">Clients</a>
+                <a href="#">Services</a>
+            </div>
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook">
+                    <img src="assets/images/fb.png" alt="Facebook">
+                </a>
+                <a href="#" aria-label="Instagram">
+                    <img src="assets/images/instagram.png" alt="Instagram">
+                </a>
+                <a href="#" aria-label="LinkedIn">
+                    <img src="assets/images/lkd.png" alt="LinkedIn">
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
