@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fooliz</title>
+    <style>
+        @font-face {
+            font-family: 'Heathergreen';
+            src: url('./assets/fonts/Heathergreen.otf') format('opentype');
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('./assets/fonts/Poppins.ttf') format('truetype');
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Heathergreen', Arial, sans-serif;
+            background-color: #DEE13E;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1920px;
+            margin: 0 auto;
+            height: auto;
+            position: relative;
+        }
+
+        .logo {
+            width: 174.3px;
+            height: 59.1px;
+            position: absolute;
+            top: 55px;
+            left: 53px;
+        }
+
+        .title {
+            width: 533px;
+            height: 50px;
+            position: absolute;
+            top: 143px;
+            left: 694px;
+            font-family: 'Heathergreen', Arial, sans-serif;
+            font-weight: 400;
+            font-size: 150px;
+            line-height: 50px;
+            text-align: center;
+            color: #000000;
+        }
+
+        .description {
+            width: 1684px;
+            position: absolute;
+            top: 291px;
+            left: 148px;
+            font-family: 'Poppins', Arial, sans-serif;
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 30px;
+            text-align: center;
+            color: #000000;
+        }
+
+        .card {
+            width: 368px;
+            height: 522px;
+            border-radius: 50px;
+            box-shadow: 
+                0px 14px 32px rgba(0, 0, 0, 0.1),
+                0px 58px 58px rgba(0, 0, 0, 0.09),
+                0px 129px 78px rgba(0, 0, 0, 0.05),
+                0px 230px 92px rgba(0, 0, 0, 0.01),
+                1px 360px 101px rgba(0, 0, 0, 0);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #000;
+            font-family: 'Poppins', Arial, sans-serif;
+            position: absolute;
+            overflow: hidden;
+            transition: background 0.3s ease;
+        }
+
+        /* Specific Card Backgrounds */
+        .basic {
+            background: linear-gradient(167.28deg, #5CBA47 9.21%, #3C9282 97.44%);
+        }
+
+        .standard {
+            background: linear-gradient(180deg, #A7429C 0%, #E8C48D 100%);
+        }
+
+        .premium {
+            background: #FFFFFF;
+        }
+
+        .single-payment {
+            background: #000000;
+        }
+
+        /* Hover Effects */
+        .basic:hover {
+            background: #5CBA47;
+        }
+
+        .standard:hover {
+            background: #A7429C;
+        }
+
+        .premium:hover {
+            background: linear-gradient(164.56deg, #000000 10.82%, #666666 97.88%);
+            color: #FFFFFF;
+        }
+
+        .single-payment:hover {
+            background: #000000;
+        }
+
+        .card h3 {
+            font-weight: 1000;
+            font-size: 54px;
+            margin: 0;
+        }
+
+        .card-circle {
+            width: 193px;
+            height: 193px;
+            background: linear-gradient(135deg, #6DC991, #47C363);
+            border-radius: 50%;
+            margin-top: 20px;
+            box-shadow: 0px 14px 20px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 400;
+            color: #000;
+        }
+
+        .triangle {
+            width: 0;
+            height: 0;
+            border-left: 130px solid transparent;
+            border-right: 130px solid transparent;
+            border-bottom: 220px solid #B05599;
+            margin-top: 20px;
+        }
+
+        .card-hover {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 50px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            z-index: 2;
+            transition: opacity 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            color: #FFFFFF;
+            font-family: 'Poppins', Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .card-hover h1, .card-hover h3 {
+            font-size: 36px;
+            font-weight: 1000;
+        }
+
+        .card:hover .card-hover {
+            opacity: 1;
+        }
+
+        .card:hover > h3,
+        .card:hover > .card-circle,
+        .card:hover > .triangle {
+            visibility: hidden;
+        }
+
+        .discount-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 417px;
+            height: 32px;
+            background-color: #DEE13E;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+
+        .discount {
+            color: #000000;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 32px;
+        }
+
+        .card-hover p {
+            font-size: 18px;
+            font-weight: 400;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .card-hover a {
+            color: #FFFFFF;
+            text-decoration: underline;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .subscribe-section {
+            width: 444px;
+            height: 110px;
+            background-color: #3B3B3B;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .subscribe-button {
+            font-size: 18px;
+            font-weight: bold;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .plan-comparison {
+            width: 100%;
+            height: 50px;
+            position: absolute;
+            top: 1150px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Heathergreen', Arial, sans-serif;
+            font-weight: 400;
+            font-size: 150px;
+            line-height: 50px;
+            text-align: center;
+            color: #000000;
+            letter-spacing: 10px;
+        }
+
+        .rectangle-52 {
+            width: 100%;
+            
+            height: 1316px;
+            background-color: #A7429C;
+            position: absolute;
+            top: 2585px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 150px;
+        } 
+
+        .rectangle-52 h1 {
+            font-family: 'Heathergreen', Arial, sans-serif;
+            font-weight: 400;
+            font-size: 150px;
+            line-height: 50px;
+            text-align: center;
+            color: #000000;
+            letter-spacing: 10px;
+            margin: 0 0 100px 0;
+        }
+
+        /* FAQ Styles */
+        .faq-container {
+            width: 1000px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: transparent;
+            margin-bottom: 20px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .faq-question {
+            color: white;
+            font-size: 24px;
+            padding: 20px 40px 20px 0;
+            position: relative;
+            font-weight: bold;
+            font-family: 'Poppins', Arial, sans-serif;
+        }
+
+        .faq-answer {
+            color: white;
+            font-size: 18px;
+            padding: 0 40px 20px 0;
+            display: none;
+            font-family: 'Poppins', Arial, sans-serif;
+        }
+
+        .faq-item::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 25px;
+            width: 20px;
+            height: 20px;
+            border-right: 3px solid white;
+            border-bottom: 3px solid white;
+            transform: rotate(45deg);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active::after {
+            transform: rotate(-135deg);
+            top: 30px;
+        }
+         /* Footer Styles */
+         .footer-wrapper {
+            background-color: #DEE13E;
+            font-family: 'Poppins', sans-serif;
+            margin-top: 100px;
+            width: 100%;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            align-items: start;
+            gap: 50px;
+            padding: 80px;
+            max-width: 1920px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            position: relative;
+        }
+
+        .footer-content img {
+            position: absolute;
+            left: -27px;
+            top: -50px;
+            width: 140px;
+            height: 47px;
+        }
+
+        .footer-content h1 {
+            font-size: 70px;
+            line-height: 80px;
+            margin-bottom: 20px;
+            color: #000000;
+        }
+
+        .get-in-touch {
+            font-weight: 500;
+            font-size: 30px;
+            line-height: 45px;
+            color: #474CBA;
+            margin-top: 20px;
+        }
+
+        .careers-section {
+            margin-left: 225px;
+            margin-top: 50px;
+        }
+
+        .careers-section h2 {
+            font-size: 70px;
+            line-height: 70px;
+            margin-bottom: 20px;
+            color: #000000;
+        }
+
+        .apply-here {
+            font-weight: 500;
+            font-size: 30px;
+            line-height: 45px;
+            color: #474CBA;
+            text-decoration: none;
+        }
+
+        .address-section {
+            font-weight: 800;
+            font-size: 30px;
+            line-height: 45px;
+            color: #474CBA;
+        }
+
+        .address-section p {
+            margin: 10px 0;
+        }
+
+        .gif-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .gif-container img {
+            width: 353px;
+            height: 353px;
+            object-fit: contain;
+        }
+
+        .footer-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 80px;
+            max-width: 1920px;
+            margin: 0 auto;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #000000;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 30px;
+            margin: 0 20px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-icons a {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #DEE13E;
+            border-radius: 50%;
+        }
+
+        .social-icons img {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+        }
+ 
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="./assets/images/logo.png" alt="Fooliz Logo" class="logo">
+        <div class="title">Find the Right Plan</div>
+        <div class="description">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+        </div>
+
+        <!-- Basic Card -->
+        <div class="card basic" style="top: 482px; left: 107px;">
+            <h3>Basic</h3>
+            <div class="card-circle"></div>
+            <div class="card-hover">
+                <h1>Basic</h1>
+                <h3>200$/month</h3>
+                <div class="discount-container">
+                    <div class="discount">10% off on yearly</div>
+                </div>
+                <p>1 App Developer<br>1 Project Manager</p>
+                <a href="#">See Details</a>
+                <div class="subscribe-section">
+                    <span class="subscribe-button">Subscribe Now</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Standard Card -->
+        <div class="card standard" style="top: 482px; left: 560px;">
+            <h3>Standard</h3>
+            <div class="triangle"></div>
+            <div class="card-hover">
+                <h1>Standard</h1>
+                <h3>400$/month</h3>
+                <div class="discount-container">
+                    <div class="discount">10% off on yearly</div>
+                </div>
+                <p>1 App Developer<br>1 Creative Designer<br>1 Project Manager</p>
+                <a href="#">See Details</a>
+                <div class="subscribe-section">
+                    <span class="subscribe-button">Subscribe Now</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Premium Card -->
+        <div class="card premium" style="top: 482px; left: 1013px;">
+            <h3>Premium</h3>
+            <div class="starss">
+                <img src="./assets/images/Star 1.png" alt="star Logo" class="starss">
+            </div>
+            <div class="card-hover">
+                <h1>Premium</h1>
+                <h3>600$/month</h3>
+                <div class="discount-container">
+                    <div class="discount">10% off on yearly</div>
+                </div>
+                <p>2 App Developers<br>2 Creative Designers<br>1 Project Manager</p>
+                <a href="#">See Details</a>
+                <div class="subscribe-section">
+                    <span class="subscribe-button">Subscribe Now</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Single Payment Card -->
+        <div class="card single-payment" style="top: 482px; left: 1466px;">
+            <h3 style="color: #fff;">Single Payment</h3>
+            <div class="starss">
+                <img src="./assets/images/Rectangle 56 (Stroke).png" alt="star Logo" class="starss">
+            </div>
+            <div class="card-hover">
+                <h1>Single Payment</h1>
+                <p>Tailored to your specific requirements<br>with a one-time project completion<br>quote based on cost and time.</p>
+                <div class="subscribe-section">
+                    <span class="subscribe-button">Order Now</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Plan Comparison Section -->
+    <div class="plan-comparison">
+        <h1>Plan Comparison</h1>
+        <img src="./assets/images/Vector.png" alt="Plan Comparison Vector" class="vector-image">
+    </div>
+
+    <!-- Rectangle 52 Section with FAQ -->
+    <div class="rectangle-52">
+         <h1>Frequently Asked Questions</h1>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">Are there discounts for long-term subscriptions?</div>
+                <div class="faq-answer">Yes, we offer significant discounts for long-term subscriptions. The longer you subscribe, the more you save!</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Are weekends included in the subscription plans?</div>
+                <div class="faq-answer">Yes, all our subscription plans include full access during weekends at no additional cost.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What payment methods do you accept?</div>
+                <div class="faq-answer">We accept all major credit cards, PayPal, and bank transfers for your convenience.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Can I upgrade my plan later?</div>
+                <div class="faq-answer">Yes, you can upgrade your plan at any time. The price difference will be prorated for the remaining subscription period.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Are there discounts for long-term subscriptions?</div>
+                <div class="faq-answer">Yes, we offer significant discounts for long-term subscriptions. The longer you subscribe, the more you save!</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Are weekends included in the subscription plans?</div>
+                <div class="faq-answer">Yes, all our subscription plans include full access during weekends at no additional cost.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What payment methods do you accept?</div>
+                <div class="faq-answer">We accept all major credit cards, PayPal, and bank transfers for your convenience.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Can I upgrade my plan later?</div>
+                <div class="faq-answer">Yes, you can upgrade your plan at any time. The price difference will be prorated for the remaining subscription period.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Are there discounts for long-term subscriptions?</div>
+                <div class="faq-answer">Yes, we offer significant discounts for long-term subscriptions. The longer you subscribe, the more you save!</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Are weekends included in the subscription plans?</div>
+                <div class="faq-answer">Yes, all our subscription plans include full access during weekends at no additional cost.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What payment methods do you accept?</div>
+                <div class="faq-answer">We accept all major credit cards, PayPal, and bank transfers for your convenience.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Can I upgrade my plan later?</div>
+                <div class="faq-answer">Yes, you can upgrade your plan at any time. The price difference will be prorated for the remaining subscription period.</div>
+            </div>
+            
+        </div>
+        <footer class="footer-wrapper">
+            <div class="footer-container">
+                <div class="footer-content">
+                    <img src="assets/images/logo.png" alt="Logo">
+                    <h1>Let's Build Your Apps Together</h1>
+                    <p class="get-in-touch">Get In Touch</p>
+                    <div class="careers-section">
+                        <h2>Careers</h2>
+                        <a href="#" class="apply-here">Apply here</a>
+                    </div>
+                </div>
+
+                <div class="address-section">
+                    <p>Dubai, Lahore, wtv Road</p>
+                    <p>Address, wtv, 43543</p>
+                    <p>Address, wtv, 43543</p>
+                    <p>Address, wtv, 43543</p>
+                </div>
+
+                <div class="gif-container">
+                    <img src="assets/images/footer.gif" alt="Walking Character Illustration">
+                </div>
+            </div>
+
+            <div class="footer-navigation">
+                <div class="nav-links">
+                    <a href="#">Work</a>
+                    <a href="#">Contact</a>
+                    <a href="#">About us</a>
+                    <a href="#">Clients</a>
+                    <a href="#">Services</a>
+                </div>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook">
+                        <img src="assets/images/fb.png" alt="Facebook">
+                    </a>
+                    <a href="#" aria-label="Instagram">
+                        <img src="assets/images/instagram.png" alt="Instagram">
+                    </a>
+                    <a href="#" aria-label="LinkedIn">
+                        <img src="assets/images/lkd.png" alt="LinkedIn">
+                    </a>
+                </div>
+            </div>
+        </footer>
+    
+    </div>
+    
+
+    <script>
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const answer = item.querySelector('.faq-answer');
+                const isActive = item.classList.contains('active');
+                
+                // Close all answers
+                document.querySelectorAll('.faq-item').forEach(otherItem => {
+                    otherItem.classList.remove('active');
+                    otherItem.querySelector('.faq-answer').style.display = 'none';
+                });
+
+                // Toggle clicked item
+                if (!isActive) {
+                    item.classList.add('active');
+                    answer.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

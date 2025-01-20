@@ -1,0 +1,212 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Our Story</title>
+        <style>
+            @font-face {
+                font-family: 'HeatherGreen';
+                src: url('HeatherGreen.ttf') format('truetype');
+            }
+
+            @font-face {
+                font-family: 'Poppins';
+                src: url('Poppins-Regular.ttf') format('truetype');
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'HeatherGreen', Arial, sans-serif;
+                background-color: #ffffff;
+            }
+
+            .container {
+                position: relative;
+                width: 100%;
+                padding: 20px;
+            }
+
+            .logo {
+                width: 174.3px;
+                position: absolute;
+                top: 55px;
+                left: 53px;
+            }
+
+            .title {
+                position: absolute;
+                top: 189px;
+                left: 53px;
+                width: 609px;
+                height: 370px;
+                font-size: 250px;
+                font-weight: 400;
+                line-height: 341.55px;
+                color: #000000;
+            }
+
+            .paragraph1 {
+                position: absolute;
+                top: 559px;
+                left: 53px;
+                width: 608px;
+                height: 246px;
+                font-family: 'Poppins', Arial, sans-serif;
+                font-size: 24px;
+                font-weight: 400;
+                line-height: 30px;
+                text-align: justify;
+                color: #000000;
+            }
+
+            .paragraph2 {
+                position: absolute;
+                top: 141px;
+                left: 887px;
+                width: 828px;
+                height: 246px;
+                font-family: 'Poppins', Arial, sans-serif;
+                font-size: 24px;
+                font-weight: 400;
+                line-height: 30px;
+                text-align: justify;
+                color: #000000;
+            }
+
+            .team-member {
+                position: absolute;
+                text-align: center;
+            }
+
+            .team-member img {
+                border-radius: 50%;
+                border: 5px solid #DEE13E;
+            }
+
+            .moutamid {
+                top: 316px;
+                left: 1086px;
+                width: 269px;
+                height: 269px;
+            }
+
+            .faizan {
+                top: 681px;
+                left: 911px;
+                width: 269px;
+                height: 269px;
+            }
+
+            .sajjad {
+                top: 518px;
+                left: 1433px;
+                width: 269px;
+                height: 269px;
+            }
+
+            .vector1 {
+                position: absolute;
+                width: 84px;
+                height: 104px;
+                top: 547px;
+                left: 1005px;
+            }
+
+            .vector2 {
+        position: absolute;
+        width: 99px;
+        height: 90px;
+        top: 402px;
+        left: 1399.2px;
+        transform: rotate(-22.9deg); /* Fixing the rotation */
+    }
+
+            .vector3 {
+                position: absolute;
+                width: 304px;
+                height: 135.1px;
+                top: 787px;
+                left: 1170px;
+            }
+
+            .team-member h3 {
+                margin-top: 10px;
+                font-family: 'Poppins', Arial, sans-serif;
+                font-size: 20px;
+                font-weight: 600;
+            }
+            /* Media Queries for Mobile View */
+            @media (max-width: 430px) {
+                .title {
+                    font-size: 80px;
+                    line-height: 100px;
+                    top: 72px;
+                    left: 24px;
+                    width: 609px;
+                    height: 370px;
+                }
+                .logo {
+                    width: 100px;
+                    height: auto; /* Maintain aspect ratio */
+                    top: 21px;
+                    left: 12px;
+                }
+                
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <!-- Logo -->
+            <img src="./assets/images/logo.png" alt="Logo" class="logo">
+
+            <!-- Title -->
+            <div class="title">OUR STORY</div>
+
+            <!-- First Paragraph -->
+            <div class="paragraph1">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            </div>
+
+            <!-- Second Paragraph -->
+            <div class="paragraph2">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.
+            </div>
+
+            <!-- Moutamid -->
+            <div class="team-member moutamid">
+                <img src="./assets/images/person1.jpg" alt="Moutamid" style="width: 269px; height: 269px; border: 5px solid #DEE13E;">
+                <h3>Moutamid</h3>
+            </div>
+
+            <!-- Faizan -->
+            <div class="team-member faizan">
+                <img src="./assets/images/person3.jpg" alt="Faizan" style="width: 269px; height: 269px; border: 5px solid #5CBA47;">
+                <h3>Faizan</h3>
+            </div>
+
+            <!-- Sajjad -->
+            <div class="team-member sajjad">
+                <img src="./assets/images/person2.jpg" alt="Sajjad" style="width: 269px; height: 269px; border: 5px solid #474CBA;">
+                <h3>Sajjad</h3>
+            </div>
+
+            <!-- Vector 1 -->
+            <img src="./assets/images/Vector 1.png" alt="Vector 1" class="vector1">
+
+            <!-- Vector 2 -->
+            <img src="./assets/images/vector 2.png" alt="Vector 2" class="vector2">
+
+            <!-- Vector 3 -->
+            <img src="./assets/images/vector 3.png" alt="Vector 3" class="vector3">
+
+    <!-- footer start -->
+    <!-- foooter ends  -->
+
+        </div>
+        
+    </body>
+    </html>
